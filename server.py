@@ -26,10 +26,9 @@ print("Yo sent")
 
 data = "doof"
 while data != "q":
-    data = conn.recv(1024).decode("utf-8")
-    print("Before data printed")
-    print(data)
-    print("After data printed")
+    data = conn.recv(1024)#.decode("utf-8")
+    if data != b"\r\n":
+        print(data.decode("utf-8"))
     if not data:
         print("Connection closed by client")
         break
